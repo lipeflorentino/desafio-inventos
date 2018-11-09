@@ -37,3 +37,9 @@ resources:  # recursos
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1          
+plugins:
+  - serverless-webpack
+
+custom:
+  webpack:
+    webpackConfig: 'webpack.config.js'   # Name of webpack configuration file
