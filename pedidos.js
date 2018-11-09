@@ -1,25 +1,27 @@
 class Pedidos {
-  constructor(db, mailer) {
-    this.db = db;
-    this.mailer = mailer;
+  constructor(email, quantidade, nome) {
+    this.email = email;
+    this.quantidade = quantidade;
+    this.nome = nome;
   }
 
-  save(email, quantidade, nome, callback) {
+  save(e, q, n, c) {
     const pedido = {
-      email: email,
-      quantidade: quantidade,
-      nomeUsuario: nome,
+      email: e,
+      quantidade: q,
+      nomeUsuario: n,
       created_at: Date.now()
     }
+    console.log('pedido salvo!');
+    console.log(pedido);
 
-    this.db.salvarPedido(pedido, function (err) {
-      if (err) {
-        callback(err);
-      } else {
-        this.mailer.sendWelcomeEmail(email);
-        callback();
-      }
-  });
+//     this.db.salvarPedido(pedido, function (err) {
+//       if (err) {
+//         callback(err);
+//       } else {
+//         callback();
+//       }
+//   });
   }
 }
 

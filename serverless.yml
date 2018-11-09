@@ -10,8 +10,17 @@ functions:
     handler: handler.registrarPedido
     events: # evento de registrar pedido
       - http:
-          path: gerenciarPedidos/registrarPedido
+          path: gerenciarPedidos/registrarPedido/{pedido}
           method: post
+          request:
+            parameters:
+              paths:
+                pedido: true
+          cors:
+            origin: '*'
+            headers:
+              
+            allowCredentials: true
 
 resources:  # recursos
   Resources:
