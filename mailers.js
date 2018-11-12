@@ -1,22 +1,26 @@
 class Mailers{
-    constructor(m) {
-    this.mailer = m;
+    constructor() {
+    
   }
   //dados de email está mockado
   enviarEmail() {
         // Use at least Nodemailer v4.1.0
         const nodemailer = require('nodemailer');
+
+        const xoauth2 = require('xoauth2');
         
-        console.log('Credentials obtained, sending message...');
-    
         // Create a SMTP transporter object
         let transporter = nodemailer.createTransport({
-            service: 'Gmail',
+            service: 'gmail',
             auth: {
-                user: 'lipeflorentino2@gmail.com', 
-                pass: 'condor1010'
+                xoauth2: xoauth2.createXOAuth2Generator({
+                    user: 'lipeflorentino2@gmail.com', 
+                    clientId: '233830467844-sh3mq10oenuv32i66h4tcrbmcjqo57ih.apps.googleusercontent.com',
+                    clientSecret: 'iJa3f6rT4X_aGzLm9cCMY0HZ',
+                    refreshoken: '1/AAStAgTmHmj169y5Dsbxg8pyzUpW7ZOTtJ3DWpE9OiA' 
+                })
+                
             }, 
-            tls: { rejectUnauthorized: false }
             
         });
         console.log('transporter criado!');
@@ -30,16 +34,16 @@ class Mailers{
             html: '<p><b>Hello</b> to myself!</p>'
         };
         console.log('mensagem criada!');
-        console.log(message);
-    
+        
         transporter.sendMail(message, function(error, info){
           if (error) {
             console.log(error);
-          } else {
-            console.log('Email enviado: ' + info.response);
+          }else{
+            console.log('Email enviado: ' + info.response);   
           }
+           
         });
-        
+    
   }    
 
 }

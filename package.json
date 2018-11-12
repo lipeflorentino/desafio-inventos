@@ -3,6 +3,7 @@
   "description": "",
   "version": "0.1.0",
   "dependencies": {
+    "gmail-send": "^1.2.14",
     "nodemailer": "^4.6.8"
   },
   "devDependencies": {
