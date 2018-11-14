@@ -16,6 +16,7 @@ module.exports.registrarPedido = async(event, context, callback) => {
   pedidos.save(email, db);
   //enviar email
   await mails.enviarEmail();
+  console.log('cheguei aqui');
   console.log(event);
   return {
     statusCode: 200,
@@ -24,7 +25,7 @@ module.exports.registrarPedido = async(event, context, callback) => {
       'Access-Control-Allow-Credentials': true,
     },
     body: JSON.stringify({
-      message: email + ', seu pedido foi registrado com sucesso!',
+      message: event.pathParameters.Pedido + ', seu pedido foi registrado com sucesso!',
       input: event, 
       
     }),
