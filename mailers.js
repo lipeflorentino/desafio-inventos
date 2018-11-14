@@ -4,12 +4,12 @@ class Mailers{
   }
   //dados de email está mockado
   enviarEmail() {
-        // Use at least Nodemailer v4.1.0
+        // Nodemailer v4.1.0
         const nodemailer = require('nodemailer');
 
         const xoauth2 = require('xoauth2');
         
-        // Create a SMTP transporter object
+        // Criando um SMTP transporter object
         let transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -25,7 +25,7 @@ class Mailers{
         });
         console.log('transporter criado!');
         
-        // Message object
+        // Mensagem
         let message = {
             from: 'lipeflorentino2@gmail.com',
             to: 'filipeflorentino@id.uff.br',
@@ -35,6 +35,7 @@ class Mailers{
         };
         console.log('mensagem criada!');
         
+        //enviar e-mail
         transporter.sendMail(message, function(error, info){
           if (error) {
             console.log(error);

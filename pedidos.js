@@ -1,20 +1,16 @@
 class Pedidos {
-  constructor(email, quantidade, nome) {
+  constructor(email, db) {
     this.email = email;
-    this.quantidade = quantidade;
-    this.nome = nome;
+    this.db = db;
   }
 
   save(e, q, n, c) {
     const pedido = {
       email: e,
-      quantidade: q,
-      nomeUsuario: n,
       created_at: Date.now()
     }
     console.log('pedido salvo!');
-    console.log(pedido);
-
+    
 //     this.db.salvarPedido(pedido, function (err) {
 //       if (err) {
 //         callback(err);

@@ -12,15 +12,12 @@ functions:
       - http:
           path: gerenciarPedidos/registrarPedido/{pedido}
           method: post
+          cors: true
           request:
             parameters:
               paths:
                 pedido: true
-          cors:
-            origin: '*'
-            headers:
-              
-            allowCredentials: true
+          
 
 resources:  # recursos
   Resources:
